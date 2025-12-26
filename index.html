@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,
+        FILL,GRAD@20..48,100..700,0..1,-50..200">
+        <link rel="stylesheet" href="style.css">
+    <title>Personal Dashboard</title>
+</head>
+<body>
+  <div class="main-container">
+    <div class="dashboard">
+        <header class="heading"><img src="cat-icon.png" alt="cat-icon">Dashboard</header> 
+        <div class="main-widget-container">
+          <div class="greeting">
+            <p>Welcome Back,</p>
+            <p id="user-name">Dikshant</p>
+          </div>
+
+          <!-- weather widget -->
+          <div class="weather-widget">
+              <a class="weatherwidget-io" href="https://forecast7.com/en/30d7076d72/sahibzada-ajit-singh-nagar/" data-label_1="MOHALI" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-theme="weather_one" >MOHALI WEATHER</a>
+          </div>
+
+
+          <!-- Notes widget -->
+          <div class="notes-widget">
+              <p id="title">NOTES</p>
+              <div class="note-input-row">
+                <textarea id="notes-textarea" placeholder="Write your notes here..." rows="2"></textarea>
+                <button id="save-note-btn">Save Note</button>
+              </div>
+              <div class="note-list-container">
+                  <ul class="notes-list" id="notes-list"></ul>
+                  <div class="empty-state hidden">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <p>No notes here yet</p>
+                  </div>
+              </div>
+          </div>
+
+
+          <!-- Quotes widget -->
+          <div class="quotes-widget">
+            <div class="quote-content">
+              <p id="quote-text" class="quote">Loading...</p>
+              <p id="quote-author" class="author">-Author</p>
+            </div>
+            <div class="quotes-error-container"></div>
+          </div>
+
+
+          <!-- calendar widget -->
+          <div class="calendar-widget">
+            <header class="calendar-header">
+              <p class="calendar-current-date"></p>
+              <div class="calendar-navigation">
+                <span id="calendar-prev">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </span>
+                <span id="calendar-next">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </span>
+              </div>
+            </header>
+
+            <div class="calendar-body">
+              <ul class="calendar-weekdays">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+              </ul>
+              <ul class="calendar-dates"></ul>
+            </div>
+          </div>
+
+
+          <!-- Habit tracker widget -->
+          <div class="habit-tracker-widget">
+            <div class="tracker-header">
+              <span>HABITS</span>
+              <span id="progress-text">0/0</span>
+            </div>
+            <!-- State 1: Empty State (show when habits.length === 0) -->
+            <div class="empty-habit-state" id="habitEmptyState">
+              <i class="fas fa-tasks"></i>
+              <p>No habits yet</p>
+              <p>Build your routine by adding a habit</p>
+            </div>
+          
+            <!-- State 2: Display State (show when habits.length > 0) -->
+            <div class="habit-display-state hidden" id="habitDisplayState">
+              <div class="habit-list-container">
+                <ul class="habit-list" id="habitList"></ul>
+              </div>
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+              </div>
+            </div>
+          
+            <!-- State 3: Input State (show when user clicks "Add Habit") -->
+            <div class="habit-input-state hidden" id="habitInputState">
+              <div class="input-header">
+                <h3>Add New Habit</h3>
+              </div>
+              <form id="add-habit-form">
+                <div class="form-group">
+                  <input 
+                    type="text" 
+                    id="new-habit-input" 
+                    placeholder="Enter habit name"
+                    maxlength="50"
+                  />
+                  <small id="char-count">0/50</small>
+                </div>
+                <div class="button-group">
+                  <button type="button" id="cancel-habit-btn">Cancel</button>
+                  <button type="submit" id="save-habit-btn">Save</button>
+                </div>
+              </form>
+            </div>
+            <button id="add-habit-btn" class="add-habit-button">+ Add Habit</button>
+          </div>
+        </div>
+    </div>
+
+<!-- Expense tracker -->
+    <div class="expense-tracker-container">
+        <h1>Expense Tracker</h1>
+    
+        <div class="balance-container">
+          <h2>YOUR BALANCE</h2>
+          <h1 id="balance">₹0.00</h1>
+        
+          <div class="summary">
+            <div class="income">
+              <h3>INCOME</h3>
+              <p id="income-amount">₹0.00</p>
+            </div>
+            <div class="expense">
+              <h3>EXPENSE</h3>
+              <p id="expense-amount">₹0.00</p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="main-content">
+          <div class="transaction-container">
+            <h2>TRANSACTIONS</h2>
+            <ul id="transaction-list">
+              <!-- TRANSACTIONS WILL BE INSERTED HERE -->
+            </ul>
+          </div>
+        
+          <div class="form-container">
+            <h2>ADD TRANSACTION</h2>
+          
+            <form id="transaction-form">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" placeholder="Enter description..." required />
+              </div>
+            
+              <div class="form-group">
+                <label for="amount" class="amount">Amount</label>
+                <input type="number" id="amount" placeholder="Enter amount..." required />
+                <small>Use negative (-) for expenses</small>
+              </div>
+            
+              <button id="add-transaction" type="submit">Add Transaction</button>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>   
