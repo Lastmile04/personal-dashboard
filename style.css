@@ -1441,8 +1441,8 @@ header .calendar-current-date {
         order: 2;
         width: 100%;
         min-width: unset;
-        height: 100vh;
-        min-height: 100vh;
+        height: auto;
+        min-height: auto;
         padding: 40px 20px;
         background: var(--expense-tracker-bg);
         color: var(--background-color);
