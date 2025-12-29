@@ -136,4 +136,5 @@ For major changes, please open an issue first.
 
 **Dikshant Thakur**
 - GitHub: [@Lastmile04](https://github.com/Lastmile04)
+- Instagram: [@_.d.i.k.s.h.a.n.t._/](https://www.instagram.com/_.d.i.k.s.h.a.n.t._/)
 
